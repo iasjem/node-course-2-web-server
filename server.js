@@ -29,23 +29,29 @@ hbs.registerHelper('getCurrentYear', () => new Date().getFullYear());
 
 hbs.registerHelper('screamIt', (text) => text.toUpperCase());
 
-app.get('/', (req, res) => {
-    res.render('home.hbs', {
+app.get('/', (req, res) => res.render('home.hbs', 
+    {
         pageTitle: 'Home Page',
         welcomeMessage: 'Welcome back!'
-    });
-});
+    })
+);
 
-app.get('/about', (req, res) => {
-    res.render('about.hbs', {
+app.get('/about', (req, res) => res.render('about.hbs', 
+    {
         pageTitle: 'About Page'
-    });
-});
+    })
+);
 
-app.get('/bad', (req, res) => {
+app.get('/projects', (req, res) => 
+    res.render('projects.hbs', {
+        pageTitle: 'Projects'
+    })
+);
+
+app.get('/bad', (req, res) => 
     res.send({
         errorMessage: 'Unable to handle request'
-    });
-});
+    })
+);
 
 app.listen(PORT, () => console.log(`Server has started on ${ PORT }`));
